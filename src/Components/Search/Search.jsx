@@ -16,6 +16,10 @@ import "../../datepicker.css"
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
+// Import AirportSearch component
+import AirportSearch from '../AirportSearch/AirportSearch'
+import '../AirportSearch/AirportSearch.css'
+
 const Search = () => {
    const [activeTab, setActiveTab] = useState('roundTrip')
    const [cities, setCities] = useState([{from: '', to: ''}])
@@ -98,11 +102,10 @@ const Search = () => {
                           </div>
                           <div className="texts">
                             <h4>From</h4>
-                            <input 
-                              type="text" 
-                              placeholder='Departure city'
+                            <AirportSearch
                               value={city.from}
-                              onChange={(e) => handleCityChange(index, 'from', e.target.value)}
+                              onChange={(airport) => handleCityChange(index, 'from', airport)}
+                              placeholder="Departure city"
                             />
                           </div>
                         </div>
@@ -114,11 +117,10 @@ const Search = () => {
                           </div>
                           <div className="texts">
                             <h4>To</h4>
-                            <input 
-                              type="text" 
-                              placeholder='Arrival city'
+                            <AirportSearch
                               value={city.to}
-                              onChange={(e) => handleCityChange(index, 'to', e.target.value)}
+                              onChange={(airport) => handleCityChange(index, 'to', airport)}
+                              placeholder="Arrival city"
                             />
                           </div>
                         </div>
@@ -153,7 +155,11 @@ const Search = () => {
                       </div>
                       <div className="texts">
                         <h4>From</h4>
-                        <input type="text" placeholder='Departure city'/>
+                        <AirportSearch
+                          value={cities[0].from}
+                          onChange={(airport) => handleCityChange(0, 'from', airport)}
+                          placeholder="Departure city"
+                        />
                       </div>
                     </div>
 
@@ -164,7 +170,11 @@ const Search = () => {
                       </div>
                       <div className="texts">
                         <h4>To</h4>
-                        <input type="text" placeholder='Arrival city'/>
+                        <AirportSearch
+                          value={cities[0].to}
+                          onChange={(airport) => handleCityChange(0, 'to', airport)}
+                          placeholder="Arrival city"
+                        />
                       </div>
                     </div>
                   </>

@@ -1,0 +1,54 @@
+.airportSearch {
+  position: relative;
+  width: 100%;
+}
+
+.airportInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--greyText);
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.airportInput:focus {
+  border-color: var(--primaryColor);
+}
+
+.suggestionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid var(--greyText);
+  border-radius: 5px;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.suggestionItem {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.suggestionItem:hover {
+  background-color: var(--lightGrey);
+}
+
+.airportName {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.airportDetails {
+  font-size: 0.9rem;
+  color: var(--greyText);
+} 
