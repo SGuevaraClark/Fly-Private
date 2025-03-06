@@ -27,7 +27,7 @@ const Info = () => {
           <button 
             data-aos="fade-left" 
             data-aos-duration="2500" 
-            className='px-6 py-2 rounded-full bg-primaryColor text-white hover:bg-opacity-90 transition-all duration-300'
+            className='px-6 py-2 rounded-full bg-primary text-white hover:bg-opacity-90 transition-all duration-300'
           >
             View All
           </button>
@@ -40,7 +40,7 @@ const Info = () => {
             data-aos-duration="2500" 
             className="p-6 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="w-12 h-12 rounded-full bg-primaryColor flex items-center justify-center mb-4">
+            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4">
               <RxCalendar className='text-white text-2xl'/>
             </div>
             <h3 className="text-xl font-semibold text-blackColor mb-3">Book & Relax</h3>

@@ -32,16 +32,16 @@ const Footer = () => {
             </div>
             <p className="text-greyText">Your mind should be stronger than your feelings, fly!</p>
             <div className="flex space-x-4">
-              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+              <a href="#" className="text-greyText hover:text-primary transition-colors duration-300">
                 <TiSocialFacebook className='w-6 h-6'/>
               </a>
-              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+              <a href="#" className="text-greyText hover:text-primary transition-colors duration-300">
                 <AiOutlineTwitter className='w-6 h-6'/>
               </a>
-              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+              <a href="#" className="text-greyText hover:text-primary transition-colors duration-300">
                 <AiFillYoutube className='w-6 h-6'/>
               </a>
-              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+              <a href="#" className="text-greyText hover:text-primary transition-colors duration-300">
                 <FaPinterestP className='w-6 h-6'/>
               </a>
             </div>
@@ -59,7 +59,7 @@ const Footer = () => {
                 <li key={item}>
                   <a 
                     href="#" 
-                    className="text-greyText hover:text-primaryColor transition-colors duration-300"
+                    className="text-greyText hover:text-primary transition-colors duration-300"
                   >
                     {item}
                   </a>
@@ -80,7 +80,7 @@ const Footer = () => {
                 <li key={item}>
                   <a 
                     href="#" 
-                    className="text-greyText hover:text-primaryColor transition-colors duration-300"
+                    className="text-greyText hover:text-primary transition-colors duration-300"
                   >
                     {item}
                   </a>
@@ -101,7 +101,7 @@ const Footer = () => {
                 <li key={item}>
                   <a 
                     href="#" 
-                    className="text-greyText hover:text-primaryColor transition-colors duration-300"
+                    className="text-greyText hover:text-primary transition-colors duration-300"
                   >
                     {item}
                   </a>
@@ -111,19 +111,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center">
-          <p className="text-greyText">
-            Courtesy Design | Developed by{' '}
-            <a 
-              href="mailto:isratech8@outlook.com" 
-              target='_blank' 
-              rel="noopener noreferrer"
-              className="text-primaryColor hover:underline"
-            >
-              IsraTech
-            </a>
-          </p>
+        {/* Copyright */}
+        <div 
+          data-aos="fade-up" 
+          data-aos-duration="2500"
+          className="border-t border-gray-200 mt-12 pt-8 text-center text-greyText"
+        >
+          <p>© {new Date().getFullYear()} PrivateJets. All rights reserved.</p>
         </div>
       </div>
     </footer>

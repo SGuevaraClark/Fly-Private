@@ -83,7 +83,7 @@ const Travelers = () => {
               {/* Traveler Details */}
               <div className="p-4 flex items-center gap-4">
                 {/* Traveler Picture */}
-                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-primaryColor">
+                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary">
                   <img 
                     src={travelerImage} 
                     alt={travelerName}

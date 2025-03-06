@@ -24,9 +24,9 @@ const Subscribe = () => {
           <input 
             type="email"  
             placeholder='Enter your email address'
-            className="w-full sm:flex-1 px-6 py-3 rounded-full border border-gray-300 focus:border-primaryColor focus:outline-none focus:ring-2 focus:ring-primaryColor/20 transition-all duration-300"
+            className="w-full sm:flex-1 px-6 py-3 rounded-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
           />
-          <button className='w-full sm:w-auto px-8 py-3 rounded-full bg-primaryColor text-white font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-md hover:shadow-lg'>
+          <button className='w-full sm:w-auto px-8 py-3 rounded-full bg-primary text-white font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-md hover:shadow-lg'>
             Subscribe Now
           </button>
         </div>

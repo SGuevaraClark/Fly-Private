@@ -134,7 +134,7 @@ const Search = () => {
                   {/* From Input */}
                   <div className="flex flex-1 min-w-[200px] px-4">
                     <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                      <HiOutlineLocationMarker className='text-2xl text-primaryColor'/>
+                      <HiOutlineLocationMarker className='text-2xl text-primary'/>
                     </div>
                     <div className="flex-1">
                       <h4 className="text-sm text-greyText mb-2">From</h4>
@@ -149,7 +149,7 @@ const Search = () => {
                   {/* To Input */}
                   <div className="flex flex-1 min-w-[200px] px-4">
                     <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                      <HiOutlineLocationMarker className='text-2xl text-primaryColor'/>
+                      <HiOutlineLocationMarker className='text-2xl text-primary'/>
                     </div>
                     <div className="flex-1">
                       <h4 className="text-sm text-greyText mb-2">To</h4>
@@ -164,7 +164,7 @@ const Search = () => {
                   {/* Departure Date */}
                   <div className="flex flex-1 min-w-[200px] px-4">
                     <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                      <RxCalendar className='text-2xl text-primaryColor'/>
+                      <RxCalendar className='text-2xl text-primary'/>
                     </div>
                     <div className="flex-1">
                       <h4 className="text-sm text-greyText mb-2">Departure</h4>
@@ -182,7 +182,7 @@ const Search = () => {
                   {/* Travelers */}
                   <div className="flex flex-1 min-w-[150px] px-4">
                     <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                      <RiAccountPinCircleLine className='text-2xl text-primaryColor'/>
+                      <RiAccountPinCircleLine className='text-2xl text-primary'/>
                     </div>
                     <div className="flex-1">
                       <h4 className="text-sm text-greyText mb-2">Travelers</h4>
@@ -208,7 +208,7 @@ const Search = () => {
                   {cities.length > 1 && (
                     <button 
                       onClick={() => handleRemoveCity(index)}
-                      className="absolute top-0 right-0 md:static md:ml-2 text-primaryColor text-xl"
+                      className="absolute top-0 right-0 md:static md:ml-2 text-primary text-xl"
                     >
                       <AiOutlineClose />
                     </button>
@@ -219,7 +219,7 @@ const Search = () => {
               {/* Add City Button */}
               <button 
                 onClick={handleAddCity}
-                className="flex items-center gap-2 px-5 py-2.5 border border-primaryColor text-primaryColor rounded-md mt-4 hover:bg-primaryColor hover:text-white transition-colors duration-300"
+                className="flex items-center gap-2 px-5 py-2.5 border border-primary text-primary rounded-md mt-4 hover:bg-primary hover:text-white transition-colors duration-300"
               >
                 <AiOutlinePlus /> Add City
               </button>
@@ -229,7 +229,7 @@ const Search = () => {
               {/* From Input */}
               <div className="flex flex-1 min-w-[200px] px-4">
                 <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                  <HiOutlineLocationMarker className='text-2xl text-primaryColor'/>
+                  <HiOutlineLocationMarker className='text-2xl text-primary'/>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-sm text-greyText mb-2">From</h4>
@@ -244,7 +244,7 @@ const Search = () => {
               {/* To Input */}
               <div className="flex flex-1 min-w-[200px] px-4">
                 <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                  <HiOutlineLocationMarker className='text-2xl text-primaryColor'/>
+                  <HiOutlineLocationMarker className='text-2xl text-primary'/>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-sm text-greyText mb-2">To</h4>
@@ -259,7 +259,7 @@ const Search = () => {
               {/* Departure Date */}
               <div className="flex flex-1 min-w-[200px] px-4">
                 <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                  <RxCalendar className='text-2xl text-primaryColor'/>
+                  <RxCalendar className='text-2xl text-primary'/>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-sm text-greyText mb-2">Departure</h4>
@@ -278,7 +278,7 @@ const Search = () => {
               {activeTab === 'roundTrip' && (
                 <div className="flex flex-1 min-w-[200px] px-4">
                   <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                    <RxCalendar className='text-2xl text-primaryColor'/>
+                    <RxCalendar className='text-2xl text-primary'/>
                   </div>
                   <div className="flex-1">
                     <h4 className="text-sm text-greyText mb-2">Return</h4>
@@ -297,7 +297,7 @@ const Search = () => {
               {/* Travelers */}
               <div className="flex flex-1 min-w-[150px] px-4">
                 <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                  <RiAccountPinCircleLine className='text-2xl text-primaryColor'/>
+                  <RiAccountPinCircleLine className='text-2xl text-primary'/>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-sm text-greyText mb-2">Travelers</h4>
@@ -324,7 +324,7 @@ const Search = () => {
 
         {/* Search Button */}
         <div className="flex justify-center w-full">
-          <button className="mt-4 px-8 py-3 bg-primaryColor text-white rounded-md min-w-[200px] hover:bg-opacity-90 transition-colors duration-300">
+          <button className="mt-4 px-8 py-3 bg-primary text-white rounded-md min-w-[200px] hover:bg-opacity-90 transition-colors duration-300">
             Search Flight
           </button>
         </div>
