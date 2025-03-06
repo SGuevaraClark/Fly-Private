@@ -1,222 +1,104 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Spartan:wght@300;400;500&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: "Spartan", sans-serif;
-  transition: 0.2s ease;
-  /* font-family: 'Montserrat', sans-serif; */
-}
 
-:root {
-  --PrimaryColor: hsl(225, 50%, 48%);
-  --SecondaryColor: hsl(180, 17%, 95%);
-  --colorOne: hsl(15, 74%, 70%);
-  --colorTwo: hsl(28, 100%, 82%);
-  --HoverColor: hsl(225, 56%, 59%);
-  --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(0, 0%, 12%);
-  --textColor: hsl(240, 1%, 48%);
-  --borderColor: hsl(0, 0%, 83%);
-  --whiteColorDeam: hsl(0, 0%, 93%);
-  --greyBg: hsl(0, 0%, 96%);
-  --greyText: rgb(145, 145, 145);
-  --inputColor: hsl(330, 12%, 97%);
-  --boxShadow: box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  --transition: .4s ease-in-out;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  background: var(--whiteColor);
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-  cursor: pointer;
-}
-
-.section {
-  padding: 4rem 0 2rem;
-}
-
-.container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.icon {
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-}
-
-.grid {
-  display: grid;
-  align-items: center;
-}
-
-.none {
-  display: none;
-}
-
-.btn {
-  padding: 0.7rem 1.5rem;
-  background: var(--PrimaryColor);
-  border: none;
-  outline: none;
-  border-radius: 3rem;
-  cursor: pointer;
-  color: var(--whiteColor);
-}
-
-.btn a {
-  color: var(--whiteColor);
-  font-weight: 500;
-}
-
-.btn:hover {
-  background: var(--HoverColor);
-}
-
-.btn:hover a {
-  color: var(--whiteColor);
-}
-
-img, video {
-  width: 100%;
-  height: auto;
-}
-
-input {
-  font-size: 100%;
-  color: var(--greyText);
-}
-
-p {
-  font-size: 13px;
-  color: var(--greyText);
-  line-height: 22px;
-}
-
-h4 {
-  padding: 1rem 0;
-  font-weight: 700;
-  color: black;
-}
-
-h2 {
-  font-size: 25px;
-  padding: 1rem 0;
-  color: var(--blackColor);
-}
-
-.navBar {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  flex-direction: column;
-  z-index: 1000;
-  width: 100%;
-}
-.navBar .navBarOne, .navBar .navBarTwo {
-  justify-content: space-between;
-  padding: 1rem;
-  width: 100%;
-}
-.navBar .navBarOne {
-  background: var(--SecondaryColor);
-}
-.navBar .navBarOne .none {
-  display: none;
-}
-.navBar .navBarOne .icon:hover {
-  color: var(--PrimaryColor);
-}
-.navBar .navBarOne .atb {
-  gap: 1rem;
-}
-.navBar .navBarOne .atb span {
-  color: var(--blackColor);
-  font-size: 13px;
-  cursor: pointer;
-}
-.navBar .navBarOne .atb span:hover {
-  color: var(--PrimaryColor);
-  font-size: 700;
-}
-.navBar .navBarTwo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between !important;
-  top: 3rem;
-  padding: 1.5rem 1rem;
-  position: fixed;
-  transition: 0.3s ease-in-out;
-}
-.navBar .navBarTwo .logoDiv .Logo {
-  width: 20%;
-}
-@media screen and (max-width: 768px) {
-  .navBar .navBarTwo .navBarMenu {
-    position: absolute;
-    background: var(--SecondaryColor);
-    padding: 1.5rem;
-    border-radius: 10px;
-    top: 5rem;
-    right: -50%;
-    width: 80%;
-    transform: translateX(50%);
-    z-index: 2000;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    border: 3px solid var(--whiteColor);
-    transition: 0.4s ease-in-out;
+@layer base {
+  * {
+    @apply m-0 p-0 box-border scroll-smooth transition-all duration-200;
   }
-  .navBar .navBarTwo .navBarMenu .menu {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
+
+  body {
+    @apply bg-white font-sans;
   }
-  .navBar .navBarTwo .navBarMenu .menu .listItem {
-    padding: 0.5rem 0;
-    cursor: pointer;
-    color: var(--blackColor);
+
+  a {
+    @apply no-underline;
   }
-  .navBar .navBarTwo .navBarMenu .menu .listItem:hover {
-    color: var(--PrimaryColor);
-    font-weight: 700;
+
+  li {
+    @apply list-none cursor-pointer;
   }
-  .navBar .navBarTwo .navBarMenu .btnOne {
-    display: block;
-    justify-content: center;
-    margin: auto;
-    align-self: center;
-    margin-top: 1rem;
+
+  h2 {
+    @apply text-2xl py-4 text-black;
   }
-  .navBar .navBarTwo .btnTwo {
-    display: none;
+
+  h4 {
+    @apply py-4 font-bold text-black;
+  }
+
+  p {
+    @apply text-sm text-gray-600 leading-[22px];
+  }
+
+  input {
+    @apply text-base text-gray-600;
+  }
+
+  img, video {
+    @apply w-full h-auto;
   }
 }
-.navBar .navBarTwo .showNavBar {
-  right: 50%;
-  transition: 0.5s ease-in-out;
+
+@layer components {
+  /* Common utility classes */
+  .section {
+    @apply py-16 px-0;
+  }
+
+  .container {
+    @apply px-6 md:w-3/4 md:mx-auto;
+  }
+
+  .btn {
+    @apply py-3 px-6 bg-primary rounded-full text-white hover:bg-hover transition-colors duration-300;
+  }
+
+  .btn a {
+    @apply text-white font-medium;
+  }
+
+  .icon {
+    @apply text-xl cursor-pointer;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .grid-center {
+    @apply grid place-items-center;
+  }
 }
-.navBar .navBarTwo .toggleIcon .icon {
-  font-size: 30px;
-  color: var(--blackColor);
-}
-.navBar .activeHeader {
-  background: var(--SecondaryColor);
-  padding: 0.5rem 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(8px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes borderRadius {
+    0% { border-radius: 0rem; }
+    50% { border-radius: 2rem; }
+    100% { border-radius: 0rem; }
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2.5 bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-xl;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
 }
 
 .home {
@@ -483,30 +365,8 @@ h2 {
   transform: translateX(-50%);
   border: 5px solid rgba(255, 255, 255, 0.637);
   transition: var(--transition);
-  -webkit-animation: identifier 2.3s infinite;
-          animation: identifier 2.3s infinite;
-}
-@-webkit-keyframes identifier {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-@keyframes identifier {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  -webkit-animation: float 2.3s infinite;
+          animation: float 2.3s infinite;
 }
 .travelers .sectionContainer .travelersContainer .singleTraveler .travelerName {
   bottom: -100%;
@@ -517,8 +377,8 @@ h2 {
   background: var(--whiteColor);
   padding: 1.5rem 1rem;
   transition: var(--transition);
-  -webkit-animation: yeaMove 2.3s infinite;
-          animation: yeaMove 2.3s infinite;
+  -webkit-animation: borderRadius 2.3s infinite;
+          animation: borderRadius 2.3s infinite;
 }
 .travelers .sectionContainer .travelersContainer .singleTraveler .travelerName span {
   display: block;
@@ -528,28 +388,6 @@ h2 {
 .travelers .sectionContainer .travelersContainer .singleTraveler .travelerName p {
   color: var(--PrimaryColor);
   font-style: italic;
-}
-@-webkit-keyframes yeaMove {
-  0% {
-    border-radius: 0rem;
-  }
-  50% {
-    border-radius: 2rem;
-  }
-  100% {
-    border-radius: 0rem;
-  }
-}
-@keyframes yeaMove {
-  0% {
-    border-radius: 0rem;
-  }
-  50% {
-    border-radius: 2rem;
-  }
-  100% {
-    border-radius: 0rem;
-  }
 }
 .travelers .sectionContainer .travelersContainer .singleTraveler:hover .travelerName {
   bottom: 0;
@@ -994,21 +832,3 @@ h2 {
     top: -30%;
   }
 }
-::-moz-selection {
-  background: var(--PrimaryColor);
-  color: var(--whiteColor);
-}
-::selection {
-  background: var(--PrimaryColor);
-  color: var(--whiteColor);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  background: var(--greyBg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--PrimaryColor);
-  border-radius: 10px;
-}/*# sourceMappingURL=main.css.map */

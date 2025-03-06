@@ -2,8 +2,7 @@ import React, {useEffect} from 'react'
 
 // Imported icons ==========>
 import {TiSocialFacebook} from 'react-icons/ti'
-import {AiOutlineTwitter} from 'react-icons/ai'
-import {AiFillYoutube} from 'react-icons/ai'
+import {AiOutlineTwitter, AiFillYoutube} from 'react-icons/ai'
 import {FaPinterestP} from 'react-icons/fa'
 
 //Imported Images ===>
@@ -14,98 +13,120 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const Footer = () => {
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init({duration: 2000})
   }, []) 
+
   return (
-    <div className='footer'>
-      <div className="sectionContainer container grid">
-        <div data-aos="fade-up" data-aos-duration="2500" className="gridOne grid">
-          <div className="logoDiv">
-            <img src={Logo} className='Logo'/>
+    <footer className='bg-white pt-16 pb-8'>
+      <div className="container mx-auto px-4 max-w-[1200px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo and Social Section */}
+          <div 
+            data-aos="fade-up" 
+            data-aos-duration="2500" 
+            className="space-y-6"
+          >
+            <div className="w-32">
+              <img src={Logo} alt="Company Logo" className='w-full h-auto'/>
+            </div>
+            <p className="text-greyText">Your mind should be stronger than your feelings, fly!</p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+                <TiSocialFacebook className='w-6 h-6'/>
+              </a>
+              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+                <AiOutlineTwitter className='w-6 h-6'/>
+              </a>
+              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+                <AiFillYoutube className='w-6 h-6'/>
+              </a>
+              <a href="#" className="text-greyText hover:text-primaryColor transition-colors duration-300">
+                <FaPinterestP className='w-6 h-6'/>
+              </a>
+            </div>
           </div>
-          <p>Your mind should be stronger than your feelings, fly!</p>
-          <div className="socialIcons flex">
-            <TiSocialFacebook className='icon'/>
-            <AiOutlineTwitter className='icon'/>
-            <AiFillYoutube className='icon'/>
-            <FaPinterestP className='icon'/>
+
+          {/* Information Links */}
+          <div 
+            data-aos="fade-up" 
+            data-aos-duration="2500" 
+            className="space-y-4"
+          >
+            <h3 className="text-lg font-bold text-blackColor">Information</h3>
+            <ul className="space-y-2">
+              {['Home', 'Explore', 'Travel', 'Flight Status', 'Check-In', 'Manage your booking'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href="#" 
+                    className="text-greyText hover:text-primaryColor transition-colors duration-300"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quick Guide Links */}
+          <div 
+            data-aos="fade-up" 
+            data-aos-duration="2500" 
+            className="space-y-4"
+          >
+            <h3 className="text-lg font-bold text-blackColor">Quick Guide</h3>
+            <ul className="space-y-2">
+              {['FAQ', 'How to', 'Features', 'Baggage', 'Route Map', 'Our communities'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href="#" 
+                    className="text-greyText hover:text-primaryColor transition-colors duration-300"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Queries Links */}
+          <div 
+            data-aos="fade-up" 
+            data-aos-duration="2500" 
+            className="space-y-4"
+          >
+            <h3 className="text-lg font-bold text-blackColor">Queries</h3>
+            <ul className="space-y-2">
+              {['Chauffeur', 'Our partners', 'Destination', 'Careers', 'Transportation', 'Programme Rules'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href="#" 
+                    className="text-greyText hover:text-primaryColor transition-colors duration-300"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div data-aos="fade-up" data-aos-duration="2500" className="footerLinks">
-          <span className="linkTitle">Information</span>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Explore</a>
-          </li>
-          <li>
-            <a href="#">Travel</a>
-          </li>
-          <li>
-            <a href="#">Flight Status</a>
-          </li>
-          <li>
-            <a href="#">Check-In</a>
-          </li>
-          <li>
-            <a href="#">Manage your booking</a>
-          </li>
-          </div>
-
-          <div data-aos="fade-up" data-aos-duration="2500" className="footerLinks">
-            <span className="linkTitle">Quick Guide</span>
-            <li>
-              <a href="#">FAQ</a>
-            </li>
-            <li>
-              <a href="#">How to</a>
-            </li>
-            <li>
-              <a href="#">Features</a>
-            </li>
-            <li>
-              <a href="#">Baggage</a>
-            </li>
-            <li>
-              <a href="#">Route Map</a>
-            </li>
-            <li>
-              <a href="#">Our communities</a>
-            </li>
-          </div>
-
-          <div data-aos="fade-up" data-aos-duration="2500" className="footerLinks">
-            <span className="linkTitle">Queries</span>
-            <li>
-              <a href="#">Chauffuer</a>
-            </li>
-            <li>
-              <a href="#">Our partners</a>
-            </li>
-            <li>
-              <a href="#">Destination</a>
-            </li>
-            <li>
-              <a href="#">Careers</a>
-            </li>
-            <li>
-              <a href="#">Transportation</a>
-            </li>
-            <li>
-              <a href="#">Programme Rules</a>
-            </li>
-          </div>
+        {/* Copyright Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+          <p className="text-greyText">
+            Courtesy Design | Developed by{' '}
+            <a 
+              href="mailto:isratech8@outlook.com" 
+              target='_blank' 
+              rel="noopener noreferrer"
+              className="text-primaryColor hover:underline"
+            >
+              IsraTech
+            </a>
+          </p>
+        </div>
       </div>
-
-      <div className="copyrightDiv flex">
-        <p>Courtesy Design | Developed by <a href="https://emailto-isratech8@outlook.com" target='_blank'>IsraTech</a></p>
-
-      </div>
-      
-    </div>
+    </footer>
   )
 }
 

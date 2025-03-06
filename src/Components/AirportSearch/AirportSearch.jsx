@@ -39,31 +39,33 @@ const AirportSearch = ({ value, onChange, placeholder }) => {
 
   const handleSelect = (airport) => {
     setSearchTerm(airport.name);
-    onChange(airport);
     setShowSuggestions(false);
+    onChange(airport);
   };
 
   return (
-    <div className="airportSearch" ref={wrapperRef}>
+    <div ref={wrapperRef} className="relative w-full">
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
-        placeholder={placeholder}
-        className="airportInput"
+        placeholder={placeholder || "Search for airports..."}
+        className="w-full p-2 border border-gray-300 rounded text-base outline-none focus:border-primary"
       />
+      
       {showSuggestions && suggestions.length > 0 && (
-        <ul className="suggestionsList">
-          {suggestions.map((airport) => (
+        <ul className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded mt-1 p-0 list-none max-h-[300px] overflow-y-auto z-10 shadow-md">
+          {suggestions.map((airport, index) => (
             <li
-              key={airport.id}
+              key={index}
               onClick={() => handleSelect(airport)}
-              className="suggestionItem"
+              className="py-3 px-4 cursor-pointer transition-colors hover:bg-gray-100"
             >
-              <div className="airportName">{airport.name}</div>
-              <div className="airportDetails">
-                {airport.city}, {airport.country}
-                {airport.iata && ` (${airport.iata})`}
+              <div className="font-medium mb-1">{airport.name}</div>
+              <div className="text-sm text-gray-500">
+                {airport.city}, {airport.country} 
+                {airport.iata ? ` (${airport.iata})` : ''}
+                {airport.type && ` - ${airport.type}`}
               </div>
             </li>
           ))}
