@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Spartan:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,54 @@
 
 @layer base {
   * {
-    @apply m-0 p-0 box-border scroll-smooth transition-all duration-200;
+    @apply m-0 p-0 box-border transition-all duration-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-family: 'Inter', sans-serif;
+    @apply text-gray-800;
   }
 
   body {
-    @apply bg-white font-sans;
+    @apply bg-light font-sans text-dark leading-relaxed;
   }
 
   a {
-    @apply no-underline;
+    @apply no-underline text-dark hover:text-primary transition-colors;
   }
 
   li {
-    @apply list-none cursor-pointer;
+    @apply list-none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply font-medium leading-tight text-dark;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
   }
 
   h2 {
-    @apply text-2xl py-4 text-black;
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
   }
 
   h4 {
-    @apply py-4 font-bold text-black;
+    @apply text-xl md:text-2xl;
   }
 
   p {
-    @apply text-sm text-gray-600 leading-[22px];
+    @apply font-light leading-relaxed;
   }
 
-  input {
-    @apply text-base text-gray-600;
+  input, textarea, select {
+    @apply text-base border border-border rounded-none px-4 py-3 w-full focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all;
   }
 
   img, video {
@@ -43,23 +62,35 @@
 }
 
 @layer components {
-  /* Common utility classes */
-  .section {
-    @apply py-16 px-0;
+  /* Luxury button styles */
+  .btn-primary {
+    @apply inline-block px-8 py-3 bg-primary text-light font-medium transition-all hover:bg-opacity-90;
   }
 
+  .btn-secondary {
+    @apply inline-block px-8 py-3 bg-transparent border border-dark text-dark font-medium transition-all hover:bg-dark hover:text-light;
+  }
+
+  .btn-outline {
+    @apply inline-block px-8 py-3 bg-transparent border border-light text-light font-medium transition-all hover:bg-light hover:text-dark;
+  }
+
+  /* Container */
   .container {
-    @apply px-6 md:w-3/4 md:mx-auto;
+    @apply px-4 md:px-8 mx-auto max-w-7xl;
   }
 
-  .btn {
-    @apply py-3 px-6 bg-primary rounded-full text-white hover:bg-hover transition-colors duration-300;
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
   }
 
-  .btn a {
-    @apply text-white font-medium;
+  /* Luxury card */
+  .luxury-card {
+    @apply bg-light p-6 md:p-8 shadow-md hover:shadow-lg transition-all;
   }
 
+  /* Common utility classes */
   .icon {
     @apply text-xl cursor-pointer;
   }
@@ -71,32 +102,58 @@
   .grid-center {
     @apply grid place-items-center;
   }
+
+  /* Typography Components */
+  .heading-serif {
+    font-family: 'Playfair Display', serif;
+    @apply font-medium;
+  }
+  
+  .text-sans {
+    font-family: 'Inter', sans-serif;
+    @apply font-light tracking-wide;
+  }
+  
+  .nav-link {
+    @apply font-light uppercase tracking-widest text-sm transition-all;
+  }
+  
+  .display-text {
+    font-family: 'Playfair Display', serif;
+    @apply font-medium tracking-wide leading-tight;
+  }
 }
 
 @layer utilities {
-  /* Custom animations */
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(8px); }
-    100% { transform: translateY(0px); }
+  /* Shadow utilities */
+  .shadow-soft {
+    @apply shadow-md;
+  }
+  
+  .shadow-medium {
+    @apply shadow-lg;
   }
 
-  @keyframes borderRadius {
-    0% { border-radius: 0rem; }
-    50% { border-radius: 2rem; }
-    100% { border-radius: 0rem; }
+  /* Custom animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
   /* Scrollbar styling */
   ::-webkit-scrollbar {
-    @apply w-2.5 bg-gray-100;
+    @apply w-1.5 bg-secondary;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary rounded-xl;
+    @apply bg-primary rounded-full;
   }
 
   ::selection {
-    @apply bg-primary text-white;
+    @apply bg-primary text-light;
   }
 }

@@ -1,10 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 // Imported Icons
-import {SiConsul} from 'react-icons/si'
-import {BsPhoneVibrate} from 'react-icons/bs'
-import {AiOutlineGlobal} from 'react-icons/ai'
-import {CgMenuGridO} from 'react-icons/cg'
+import {AiOutlinePhone, AiOutlineGlobal, AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 
 //Imported Images ===>
 import Logo from '../../assets/logo.png'
@@ -25,73 +22,103 @@ const Navbar = () => {
     }
   }
   
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Navigation items
+  const navItems = ['Home', 'Fleet', 'Destinations', 'Services', 'About']
+
   return (
-    <div className='flex flex-col fixed w-full z-50'>
-      {/* Top Bar */}
-      <div className="flex justify-between items-center bg-secondary p-4">
-        <div>
-          <SiConsul className='text-xl cursor-pointer hover:text-primary transition-colors'/>
-        </div>
-        
-        <div className='hidden md:flex gap-6'>
-          <li className='flex items-center gap-2 text-sm text-textColor hover:text-primary hover:underline cursor-pointer'>
-            <BsPhoneVibrate className='text-lg'/> Support
-          </li>
-          <li className='flex items-center gap-2 text-sm text-textColor hover:text-primary hover:underline cursor-pointer'>
-            <AiOutlineGlobal className='text-lg'/> Languages
-          </li>
-        </div>
-        
-        <div className='flex gap-4'>
-          <span className="text-sm cursor-pointer hover:text-primary hover:font-bold transition-all">Sign In</span>
-          <span className="text-sm cursor-pointer hover:text-primary hover:font-bold transition-all">Sign Up</span>
-        </div>
-      </div>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-light shadow-soft' : 'bg-transparent'
+    }`}>
+      <div className="container">
+        {/* Main Navigation */}
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <a href="/" className="z-20">
+            <img src={Logo} alt="PrivateJets Logo" className="h-12 md:h-16" />
+          </a>
 
-      {/* Main Navigation */}
-      <div className={`flex justify-between items-center p-6 transition-all duration-300 ${
-        isScrolled ? 'bg-secondary shadow-md' : ''
-      }`}>
-        {/* Logo */}
-        <div className="w-20">
-          <img src={Logo} alt="Logo" className='w-full'/>
-        </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <ul className="flex gap-8">
+              {navItems.map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                    className={`text-sm font-light uppercase tracking-widest transition-colors hover:opacity-80 ${
+                      isScrolled ? 'text-dark hover:text-primary' : 'text-light hover:text-primary'
+                    }`}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            
+            {/* CTA Button */}
+            <a 
+              href="#get-a-quote" 
+              className={`btn-primary text-sm font-light tracking-wider py-2.5 px-7 ml-4 ${
+                isScrolled ? '' : 'border border-light'
+              }`}
+            >
+              Get a Quote
+            </a>
+          </nav>
 
-        {/* Mobile Menu */}
-        <div className={`${
-          isMenuOpen 
-            ? 'absolute top-full right-1/2 translate-x-1/2 w-4/5 md:static md:translate-x-0 md:w-auto' 
-            : 'absolute top-full right-[-50%] md:static md:right-0'
-        } bg-secondary md:bg-transparent p-6 md:p-0 rounded-lg md:rounded-none shadow-lg md:shadow-none border-3 border-white md:border-none transition-all duration-400 z-20`}>
-          <ul className="flex flex-col md:flex-row gap-2 md:gap-4 text-center md:text-left">
-            <li onClick={() => setIsMenuOpen(false)} className="py-2 md:py-0 px-2 text-sm font-bold text-textColor hover:text-primary cursor-pointer">Home</li>
-            <li onClick={() => setIsMenuOpen(false)} className="py-2 md:py-0 px-2 text-sm font-bold text-textColor hover:text-primary cursor-pointer">About</li>
-            <li onClick={() => setIsMenuOpen(false)} className="py-2 md:py-0 px-2 text-sm font-bold text-textColor hover:text-primary cursor-pointer">Offers</li>
-            <li onClick={() => setIsMenuOpen(false)} className="py-2 md:py-0 px-2 text-sm font-bold text-textColor hover:text-primary cursor-pointer">Seats</li>
-            <li onClick={() => setIsMenuOpen(false)} className="py-2 md:py-0 px-2 text-sm font-bold text-textColor hover:text-primary cursor-pointer">Destinations</li>
-          </ul>
-          
-          <button onClick={() => setIsMenuOpen(false)} className='md:hidden mt-4 w-full py-2 px-6 bg-primary text-white rounded-full hover:bg-opacity-90 transition-colors'>
-            Contact
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={toggleMenu} 
+            className="md:hidden z-20 text-2xl"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <AiOutlineClose className={isScrolled ? 'text-dark' : 'text-light'} />
+            ) : (
+              <AiOutlineMenu className={isScrolled ? 'text-dark' : 'text-light'} />
+            )}
           </button>
-        </div>
 
-        {/* Desktop Contact Button */}
-        <button className='hidden md:block py-2 px-6 bg-primary text-white rounded-full hover:bg-opacity-90 transition-colors'>
-          Contact
-        </button>
-
-        {/* Mobile Menu Toggle */}
-        <div onClick={toggleMenu} className="md:hidden cursor-pointer">
-          <CgMenuGridO className='text-3xl text-black'/>
+          {/* Mobile Menu */}
+          <div className={`fixed inset-0 bg-dark bg-opacity-95 z-10 flex flex-col justify-center items-center transition-all duration-300 ${
+            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}>
+            <nav className="w-full max-w-md px-6">
+              <ul className="flex flex-col gap-6 text-center">
+                {navItems.map((item) => (
+                  <li key={item}>
+                    <a 
+                      href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                      className="text-xl font-light tracking-widest text-light hover:text-primary block py-2 border-b border-light border-opacity-20"
+                      onClick={toggleMenu}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Mobile CTA */}
+              <div className="mt-12">
+                <a href="#get-a-quote" className="btn-primary w-full block text-center py-4 font-light tracking-wider" onClick={toggleMenu}>
+                  Get a Quote
+                </a>
+              </div>
+              
+              <div className="mt-12 flex justify-center gap-6">
+                <a href="tel:+1234567890" className="flex items-center gap-2 text-light hover:text-primary font-light tracking-wide">
+                  <AiOutlinePhone className="text-lg" /> +1 (234) 567-890
+                </a>
+              </div>
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 
