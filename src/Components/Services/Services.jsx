@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 //Imported Images
-import gridImage from '../../assets/Images-Grid.png'
+import servicesImage from '../../assets/services.webp'
 
 // import AOS ============================>
 import Aos from 'aos'
@@ -98,12 +98,12 @@ const Services = () => {
           <div 
             data-aos="fade-left" 
             data-aos-duration="2000" 
-            className="mx-auto max-w-md md:max-w-none"
+            className="mx-auto max-w-md md:max-w-none rounded-lg overflow-hidden shadow-lg"
           >
             <img 
-              src={gridImage} 
+              src={servicesImage} 
               alt="Luxury private jet services" 
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
             />
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 // Imported Images =======>
-import imageGrid from '../../assets/images-Grid2.png'
+import cabinImage from '../../assets/cabinExp.webp'
 // import AOS ============================>
 import Aos from 'aos'
 import 'aos/dist/aos.css'
@@ -19,12 +19,12 @@ const CabinExperience = () => {
           <div 
             data-aos="fade-right" 
             data-aos-duration="2000" 
-            className="order-2 md:order-1"
+            className="order-2 md:order-1 rounded-lg overflow-hidden shadow-lg"
           >
             <img 
-              src={imageGrid} 
+              src={cabinImage} 
               alt="Luxury private jet interior" 
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
             />
           </div>
 

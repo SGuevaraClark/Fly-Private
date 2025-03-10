@@ -6,6 +6,7 @@ import {RiAccountPinCircleLine} from 'react-icons/ri'
 import {RxCalendar} from 'react-icons/rx'
 import {AiOutlinePlus, AiOutlineClose} from 'react-icons/ai'
 import {FiMinus, FiPlus} from 'react-icons/fi'
+import {BsWhatsapp} from 'react-icons/bs'
 
 // Import DatePicker
 import DatePicker from "react-datepicker"
@@ -52,6 +53,10 @@ const Search = () => {
      travelers: 1
    }])
    const [returnDate, setReturnDate] = useState(null)
+   const [isSubmitting, setIsSubmitting] = useState(false)
+   
+   // WhatsApp contact number
+   const whatsappNumber = "+34695863455"
 
    const handleAddCity = () => {
      setCities([...cities, {
@@ -88,6 +93,86 @@ const Search = () => {
        newCities[index].travelers = Math.max(1, newCities[index].travelers - 1)
      }
      setCities(newCities)
+   }
+
+   // Format date for WhatsApp message
+   const formatDate = (date) => {
+     if (!date) return "Not specified";
+     return date.toLocaleDateString('en-US', {
+       year: 'numeric',
+       month: 'long',
+       day: 'numeric'
+     });
+   }
+
+   // Format airport data for WhatsApp message
+   const formatAirport = (airport) => {
+     if (!airport) return "Not specified";
+     // Check if it's an object (from AirportSearch component)
+     if (typeof airport === 'object') {
+       // Return airport name or code if available
+       return airport.name || airport.code || airport.label || JSON.stringify(airport);
+     }
+     // If it's already a string, return it directly
+     return airport;
+   }
+
+   // Handle sending data to WhatsApp
+   const handleSendToWhatsApp = () => {
+     // Basic validation
+     if (activeTab !== 'multiCity' && (!cities[0].from || !cities[0].to)) {
+       alert("Please specify departure and arrival locations");
+       return;
+     }
+     
+     if (activeTab === 'multiCity') {
+       const invalidCity = cities.find(city => !city.from || !city.to);
+       if (invalidCity) {
+         alert("Please specify all departure and arrival locations");
+         return;
+       }
+     }
+
+     setIsSubmitting(true);
+     
+     // Format message based on trip type
+     let message = `*Private Jet Charter Request*\n\n`;
+     message += `Trip Type: ${activeTab === 'oneWay' ? 'One Way' : activeTab === 'roundTrip' ? 'Round Trip' : 'Multi-City'}\n\n`;
+     
+     if (activeTab === 'multiCity') {
+       // Format multi-city itinerary
+       message += `*Multi-City Itinerary:*\n`;
+       cities.forEach((city, index) => {
+         message += `\nLeg ${index + 1}:\n`;
+         message += `From: ${formatAirport(city.from)}\n`;
+         message += `To: ${formatAirport(city.to)}\n`;
+         message += `Date: ${formatDate(city.departureDate)}\n`;
+         message += `Travelers: ${city.travelers}\n`;
+       });
+     } else {
+       // Format one-way or round trip
+       message += `From: ${formatAirport(cities[0].from)}\n`;
+       message += `To: ${formatAirport(cities[0].to)}\n`;
+       message += `Departure: ${formatDate(cities[0].departureDate)}\n`;
+       
+       if (activeTab === 'roundTrip') {
+         message += `Return: ${formatDate(returnDate)}\n`;
+       }
+       
+       message += `Travelers: ${cities[0].travelers}\n`;
+     }
+     
+     message += `\nPlease provide me with a quote for this trip. Thank you!`;
+     
+     // Encode message for URL
+     const encodedMessage = encodeURIComponent(message);
+     
+     // Create WhatsApp URL
+     const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}?text=${encodedMessage}`;
+     
+     // Open WhatsApp in new tab
+     window.open(whatsappUrl, '_blank');
+     setIsSubmitting(false);
    }
 
    useEffect(()=>{
@@ -375,9 +460,20 @@ const Search = () => {
 
                 {/* Search Button */}
                 <div className="text-center mt-8">
-                  <button className="btn-primary py-3 px-10">
-                    Search Private Jets
+                  <button 
+                    onClick={handleSendToWhatsApp}
+                    disabled={isSubmitting}
+                    className="btn-primary py-3 px-10 flex items-center justify-center mx-auto gap-2 min-w-[200px]"
+                  >
+                    {isSubmitting ? 'Processing...' : (
+                      <>
+                        <BsWhatsapp className="text-xl" /> Get a Quote
+                      </>
+                    )}
                   </button>
+                  <p className="text-xs text-gray-500 mt-2">
+                    Your inquiry will be sent via WhatsApp for faster response
+                  </p>
                 </div>
               </div>
             </div>

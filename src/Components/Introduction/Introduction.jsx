@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react'
 
+//Imported Images
+import introJet from '../../assets/introJet.jpeg'
+
 // import AOS ============================>
 import Aos from 'aos'
 import 'aos/dist/aos.css'
@@ -39,14 +42,15 @@ const Introduction = () => {
             </p>
           </div>
           <div 
-            className="aspect-video bg-secondary rounded-lg shadow-lg overflow-hidden"
+            className="rounded-lg overflow-hidden shadow-lg"
             data-aos="fade-left" 
             data-aos-duration="2000"
           >
-            {/* Placeholder for a luxury jet interior image */}
-            <div className="w-full h-full flex items-center justify-center text-primary font-light">
-              Luxury Jet Interior Image
-            </div>
+            <img 
+              src={introJet} 
+              alt="Luxury private jet interior"
+              className="w-full h-full object-cover hover:scale-105 transition-all duration-700"
+            />
           </div>
         </div>
       </div>

@@ -37,32 +37,7 @@ const Contact = () => {
           </button>
         </div>
         
-        <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-6 max-w-4xl mx-auto">
-          <div className="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3">
-            <h3 className="text-lg font-semibold mb-2">Direct Inquiries</h3>
-            <p className="text-sm text-greyText">
-              <a href="tel:+12345678901" className="text-primary hover:underline">+1 (234) 567-8901</a>
-            </p>
-            <p className="text-sm text-greyText">
-              <a href="mailto:charter@privatejet.com" className="text-primary hover:underline">charter@privatejet.com</a>
-            </p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3">
-            <h3 className="text-lg font-semibold mb-2">Charter Support</h3>
-            <p className="text-sm text-greyText">
-              Available 24/7 for personalized assistance with flight planning and special requests
-            </p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3">
-            <h3 className="text-lg font-semibold mb-2">Office Hours</h3>
-            <p className="text-sm text-greyText">
-              Mon-Fri: 24 Hours<br />
-              Sat-Sun: 24 Hours
-            </p>
-          </div>
-        </div>
+      
       </div>
     </div>
   )
