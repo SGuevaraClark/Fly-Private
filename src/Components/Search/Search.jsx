@@ -20,6 +20,29 @@ import 'aos/dist/aos.css'
 // Import AirportSearch component
 import AirportSearch from '../AirportSearch/AirportSearch'
 
+// JSON-LD Schema for SEO
+const FlightBookingSchema = {
+  "@context": "https://schema.org",
+  "@type": "FlightReservation",
+  "reservationFor": {
+    "@type": "Flight",
+    "provider": {
+      "@type": "Airline",
+      "name": "PrivateJets",
+      "iataCode": "PJ"
+    },
+    "aircraft": {
+      "@type": "Vehicle",
+      "name": "Private Jet"
+    }
+  },
+  "bookingAgent": {
+    "@type": "TravelAgency",
+    "name": "PrivateJets Charter",
+    "url": "https://privatejet.example.com"
+  }
+};
+
 const Search = () => {
    const [activeTab, setActiveTab] = useState('roundTrip')
    const [cities, setCities] = useState([{
@@ -72,92 +95,195 @@ const Search = () => {
    }, []) 
 
   return (
-    <section id="search" className="section bg-secondary">
-      <div className="container">
-        <div 
-          data-aos="fade-up" 
-          data-aos-duration="1500"
-          className="max-w-5xl mx-auto"
-        >
-          {/* Section Title */}
-          <div className="text-center mb-12">
-            <h2 className="mb-4">Book Your Private Flight</h2>
-            <p className="max-w-2xl mx-auto">
-              Experience the freedom of flying on your schedule. Our fleet of luxury aircraft is ready to take you anywhere in the world with unparalleled comfort and privacy.
-            </p>
-          </div>
-          
-          {/* Search Card */}
-          <div className="bg-light shadow-medium p-8 rounded-sm">
-            {/* Trip Type Tabs */}
-            <div className="flex border-b border-border mb-8">
-              <button 
-                className={`px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors border-b-2 -mb-px ${
-                  activeTab === 'oneWay' 
-                    ? 'border-primary text-primary' 
-                    : 'border-transparent text-muted hover:text-dark'
-                }`}
-                onClick={() => {
-                  setActiveTab('oneWay')
-                  setCities([{
-                    from: '', 
-                    to: '', 
-                    departureDate: null,
-                    travelers: 1
-                  }])
-                  setReturnDate(null)
-                }}
-              >
-                One Way
-              </button>
-              <button 
-                className={`px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors border-b-2 -mb-px ${
-                  activeTab === 'roundTrip' 
-                    ? 'border-primary text-primary' 
-                    : 'border-transparent text-muted hover:text-dark'
-                }`}
-                onClick={() => {
-                  setActiveTab('roundTrip')
-                  setCities([{
-                    from: '', 
-                    to: '', 
-                    departureDate: null,
-                    travelers: 1
-                  }])
-                }}
-              >
-                Round Trip
-              </button>
-              <button 
-                className={`px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors border-b-2 -mb-px ${
-                  activeTab === 'multiCity' 
-                    ? 'border-primary text-primary' 
-                    : 'border-transparent text-muted hover:text-dark'
-                }`}
-                onClick={() => setActiveTab('multiCity')}
-              >
-                Multi-City
-              </button>
+    <>
+      {/* Add Structured Data for SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify(FlightBookingSchema)}
+      </script>
+      
+      <section id="search" className="section bg-secondary">
+        <div className="container">
+          <div 
+            data-aos="fade-up" 
+            data-aos-duration="2000"
+            className="max-w-5xl mx-auto"
+          >
+            {/* Section Title */}
+            <div className="text-center mb-12">
+              <span className="section-subtitle">Charter Now</span>
+              <h2 className="section-title-center">Book Your Private Flight</h2>
+              <p className="text-gray-600 text-base max-w-2xl mx-auto">
+                Experience the freedom of flying on your schedule. Our fleet of luxury aircraft is ready to take you anywhere in the world with unparalleled comfort and privacy.
+              </p>
             </div>
+            
+            {/* Search Card */}
+            <div className="bg-light shadow-medium p-8 rounded-lg">
+              {/* Trip Type Tabs */}
+              <div className="flex border-b border-border mb-8">
+                <button 
+                  className={`px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors border-b-2 -mb-px ${
+                    activeTab === 'oneWay' 
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent text-muted hover:text-dark'
+                  }`}
+                  onClick={() => {
+                    setActiveTab('oneWay')
+                    setCities([{
+                      from: '', 
+                      to: '', 
+                      departureDate: null,
+                      travelers: 1
+                    }])
+                    setReturnDate(null)
+                  }}
+                >
+                  One Way
+                </button>
+                <button 
+                  className={`px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors border-b-2 -mb-px ${
+                    activeTab === 'roundTrip' 
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent text-muted hover:text-dark'
+                  }`}
+                  onClick={() => {
+                    setActiveTab('roundTrip')
+                    setCities([{
+                      from: '', 
+                      to: '', 
+                      departureDate: null,
+                      travelers: 1
+                    }])
+                  }}
+                >
+                  Round Trip
+                </button>
+                <button 
+                  className={`px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors border-b-2 -mb-px ${
+                    activeTab === 'multiCity' 
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent text-muted hover:text-dark'
+                  }`}
+                  onClick={() => setActiveTab('multiCity')}
+                >
+                  Multi-City
+                </button>
+              </div>
 
-            {/* Search Form */}
-            <div className="space-y-6">
               {/* Search Inputs */}
-              <div data-aos="fade-up" data-aos-duration="2500" className="flex flex-wrap gap-4">
-                {activeTab === 'multiCity' ? (
-                  <div className="w-full">
-                    {cities.map((city, index) => (
-                      <div key={index} className="flex flex-wrap md:flex-nowrap gap-4 mb-4 relative w-full">
+              <div className="space-y-6">
+                {/* Search Inputs */}
+                <div data-aos="fade-up" data-aos-duration="2000" className="flex flex-wrap gap-4">
+                  {activeTab === 'multiCity' ? (
+                    <div className="w-full">
+                      {cities.map((city, index) => (
+                        <div key={index} className="flex flex-wrap md:flex-nowrap gap-4 mb-4 relative w-full">
+                          {/* From Input */}
+                          <div className="flex flex-1 min-w-[200px] px-4">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                              <HiOutlineLocationMarker className='text-white text-2xl'/>
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-sm text-gray-600 mb-2">From</h4>
+                              <AirportSearch
+                                value={city.from}
+                                onChange={(airport) => handleCityChange(index, 'from', airport)}
+                                placeholder="Departure city"
+                              />
+                            </div>
+                          </div>
+
+                          {/* To Input */}
+                          <div className="flex flex-1 min-w-[200px] px-4">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                              <HiOutlineLocationMarker className='text-white text-2xl'/>
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-sm text-gray-600 mb-2">To</h4>
+                              <AirportSearch
+                                value={city.to}
+                                onChange={(airport) => handleCityChange(index, 'to', airport)}
+                                placeholder="Arrival city"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Departure Date */}
+                          <div className="flex flex-1 min-w-[200px] px-4">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                              <RxCalendar className='text-white text-2xl'/>
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-sm text-gray-600 mb-2">Departure</h4>
+                              <DatePicker
+                                selected={city.departureDate}
+                                onChange={(date) => handleDateChange(index, date)}
+                                placeholderText="Select date"
+                                minDate={index > 0 ? cities[index - 1].departureDate || new Date() : new Date()}
+                                className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                                dateFormat="MMMM d, yyyy"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Travelers */}
+                          <div className="flex flex-1 min-w-[150px] px-4">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                              <RiAccountPinCircleLine className='text-white text-2xl'/>
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-sm text-gray-600 mb-2">Travelers</h4>
+                              <div className="flex items-center">
+                                <button 
+                                  onClick={() => handleTravelersChange(index, false)}
+                                  className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center"
+                                >
+                                  <FiMinus />
+                                </button>
+                                <span className="mx-4 min-w-[20px] text-center">{city.travelers}</span>
+                                <button 
+                                  onClick={() => handleTravelersChange(index, true)}
+                                  className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center"
+                                >
+                                  <FiPlus />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Remove button */}
+                          {cities.length > 1 && (
+                            <button 
+                              onClick={() => handleRemoveCity(index)}
+                              className="absolute top-0 right-0 md:static md:ml-2 text-primary text-xl"
+                            >
+                              <AiOutlineClose />
+                            </button>
+                          )}
+                        </div>
+                      ))}
+
+                      {/* Add City Button */}
+                      <button 
+                        onClick={handleAddCity}
+                        className="flex items-center gap-2 px-5 py-2.5 border border-primary text-primary rounded-md mt-4 hover:bg-primary hover:text-white transition-colors duration-300"
+                      >
+                        <AiOutlinePlus /> Add City
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-full">
+                      <div className="flex flex-wrap md:flex-nowrap gap-4 mb-4 relative w-full">
                         {/* From Input */}
                         <div className="flex flex-1 min-w-[200px] px-4">
-                          <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                            <HiOutlineLocationMarker className='text-2xl text-primary'/>
+                          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <HiOutlineLocationMarker className='text-white text-2xl'/>
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-sm text-greyText mb-2">From</h4>
+                            <h4 className="text-sm text-gray-600 mb-2">From</h4>
                             <AirportSearch
-                              value={city.from}
-                              onChange={(airport) => handleCityChange(index, 'from', airport)}
+                              value={cities[0].from}
+                              onChange={(airport) => handleCityChange(0, 'from', airport)}
                               placeholder="Departure city"
                             />
                           </div>
@@ -165,191 +291,100 @@ const Search = () => {
 
                         {/* To Input */}
                         <div className="flex flex-1 min-w-[200px] px-4">
-                          <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                            <HiOutlineLocationMarker className='text-2xl text-primary'/>
+                          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <HiOutlineLocationMarker className='text-white text-2xl'/>
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-sm text-greyText mb-2">To</h4>
+                            <h4 className="text-sm text-gray-600 mb-2">To</h4>
                             <AirportSearch
-                              value={city.to}
-                              onChange={(airport) => handleCityChange(index, 'to', airport)}
+                              value={cities[0].to}
+                              onChange={(airport) => handleCityChange(0, 'to', airport)}
                               placeholder="Arrival city"
                             />
                           </div>
                         </div>
+                      </div>
 
+                      <div className="flex flex-wrap md:flex-nowrap gap-4 mb-4 relative w-full">
                         {/* Departure Date */}
                         <div className="flex flex-1 min-w-[200px] px-4">
-                          <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                            <RxCalendar className='text-2xl text-primary'/>
+                          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <RxCalendar className='text-white text-2xl'/>
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-sm text-greyText mb-2">Departure</h4>
+                            <h4 className="text-sm text-gray-600 mb-2">Departure</h4>
                             <DatePicker
-                              selected={city.departureDate}
-                              onChange={(date) => handleDateChange(index, date)}
+                              selected={cities[0].departureDate}
+                              onChange={(date) => handleDateChange(0, date)}
                               placeholderText="Select date"
-                              minDate={index > 0 ? cities[index - 1].departureDate || new Date() : new Date()}
-                              className="w-full p-2 border border-greyText rounded-md outline-none"
+                              minDate={new Date()}
+                              className="w-full p-2 border border-gray-300 rounded-md outline-none"
                               dateFormat="MMMM d, yyyy"
                             />
                           </div>
                         </div>
 
+                        {/* Return Date (Only for Round Trip) */}
+                        {activeTab === 'roundTrip' && (
+                          <div className="flex flex-1 min-w-[200px] px-4">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                              <RxCalendar className='text-white text-2xl'/>
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-sm text-gray-600 mb-2">Return</h4>
+                              <DatePicker
+                                selected={returnDate}
+                                onChange={(date) => setReturnDate(date)}
+                                placeholderText="Select date"
+                                minDate={cities[0].departureDate || new Date()}
+                                className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                                dateFormat="MMMM d, yyyy"
+                              />
+                            </div>
+                          </div>
+                        )}
+
                         {/* Travelers */}
                         <div className="flex flex-1 min-w-[150px] px-4">
-                          <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                            <RiAccountPinCircleLine className='text-2xl text-primary'/>
+                          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <RiAccountPinCircleLine className='text-white text-2xl'/>
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-sm text-greyText mb-2">Travelers</h4>
+                            <h4 className="text-sm text-gray-600 mb-2">Travelers</h4>
                             <div className="flex items-center">
                               <button 
-                                onClick={() => handleTravelersChange(index, false)}
-                                className="w-8 h-8 border border-greyText rounded flex items-center justify-center"
+                                onClick={() => handleTravelersChange(0, false)}
+                                className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center"
                               >
                                 <FiMinus />
                               </button>
-                              <span className="mx-4 min-w-[20px] text-center">{city.travelers}</span>
+                              <span className="mx-4 min-w-[20px] text-center">{cities[0].travelers}</span>
                               <button 
-                                onClick={() => handleTravelersChange(index, true)}
-                                className="w-8 h-8 border border-greyText rounded flex items-center justify-center"
+                                onClick={() => handleTravelersChange(0, true)}
+                                className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center"
                               >
                                 <FiPlus />
                               </button>
                             </div>
                           </div>
                         </div>
-
-                        {/* Remove button */}
-                        {cities.length > 1 && (
-                          <button 
-                            onClick={() => handleRemoveCity(index)}
-                            className="absolute top-0 right-0 md:static md:ml-2 text-primary text-xl"
-                          >
-                            <AiOutlineClose />
-                          </button>
-                        )}
-                      </div>
-                    ))}
-
-                    {/* Add City Button */}
-                    <button 
-                      onClick={handleAddCity}
-                      className="flex items-center gap-2 px-5 py-2.5 border border-primary text-primary rounded-md mt-4 hover:bg-primary hover:text-white transition-colors duration-300"
-                    >
-                      <AiOutlinePlus /> Add City
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    {/* From Input */}
-                    <div className="flex flex-1 min-w-[200px] px-4">
-                      <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                        <HiOutlineLocationMarker className='text-2xl text-primary'/>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm text-greyText mb-2">From</h4>
-                        <AirportSearch
-                          value={cities[0].from}
-                          onChange={(airport) => handleCityChange(0, 'from', airport)}
-                          placeholder="Departure city"
-                        />
                       </div>
                     </div>
+                  )}
+                </div>
 
-                    {/* To Input */}
-                    <div className="flex flex-1 min-w-[200px] px-4">
-                      <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                        <HiOutlineLocationMarker className='text-2xl text-primary'/>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm text-greyText mb-2">To</h4>
-                        <AirportSearch
-                          value={cities[0].to}
-                          onChange={(airport) => handleCityChange(0, 'to', airport)}
-                          placeholder="Arrival city"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Departure Date */}
-                    <div className="flex flex-1 min-w-[200px] px-4">
-                      <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                        <RxCalendar className='text-2xl text-primary'/>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm text-greyText mb-2">Departure</h4>
-                        <DatePicker
-                          selected={cities[0].departureDate}
-                          onChange={(date) => handleDateChange(0, date)}
-                          placeholderText="Select date"
-                          minDate={new Date()}
-                          className="w-full p-2 border border-greyText rounded-md outline-none"
-                          dateFormat="MMMM d, yyyy"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Return Date - Only for Round Trip */}
-                    {activeTab === 'roundTrip' && (
-                      <div className="flex flex-1 min-w-[200px] px-4">
-                        <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                          <RxCalendar className='text-2xl text-primary'/>
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-sm text-greyText mb-2">Return</h4>
-                          <DatePicker
-                            selected={returnDate}
-                            onChange={(date) => setReturnDate(date)}
-                            placeholderText="Select date"
-                            minDate={cities[0].departureDate || new Date()}
-                            className="w-full p-2 border border-greyText rounded-md outline-none"
-                            dateFormat="MMMM d, yyyy"
-                          />
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Travelers */}
-                    <div className="flex flex-1 min-w-[150px] px-4">
-                      <div className="w-10 h-10 rounded-full bg-greyBg flex items-center justify-center mr-4">
-                        <RiAccountPinCircleLine className='text-2xl text-primary'/>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm text-greyText mb-2">Travelers</h4>
-                        <div className="flex items-center">
-                          <button 
-                            onClick={() => handleTravelersChange(0, false)}
-                            className="w-8 h-8 border border-greyText rounded flex items-center justify-center"
-                          >
-                            <FiMinus />
-                          </button>
-                          <span className="mx-4 min-w-[20px] text-center">{cities[0].travelers}</span>
-                          <button 
-                            onClick={() => handleTravelersChange(0, true)}
-                            className="w-8 h-8 border border-greyText rounded flex items-center justify-center"
-                          >
-                            <FiPlus />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Search Button */}
-              <div className="flex justify-center w-full">
-                <button className="mt-4 px-8 py-3 bg-primary text-white rounded-md min-w-[200px] hover:bg-opacity-90 transition-colors duration-300">
-                  Search Flight
-                </button>
+                {/* Search Button */}
+                <div className="text-center mt-8">
+                  <button className="btn-primary py-3 px-10">
+                    Search Private Jets
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

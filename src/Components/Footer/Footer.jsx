@@ -20,31 +20,7 @@ const Footer = () => {
   return (
     <footer className='bg-gradient-to-b from-white to-gray-50 pt-24 pb-8 border-t border-gray-100'>
       <div className="container mx-auto px-4 max-w-[1200px]">
-        {/* Top Section with Logo & Newsletter */}
-        <div 
-          data-aos="fade-up" 
-          data-aos-duration="2000"
-          className="flex flex-col items-center text-center mb-16"
-        >
-          <div className="w-40 mb-6">
-            <img src={Logo} alt="PrivateJets Logo" className='w-full h-auto'/>
-          </div>
-          <p className="text-greyText text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-            Experience the pinnacle of private aviation with unmatched luxury, privacy, and efficiency.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl w-full mx-auto">
-            <input 
-              type="email"  
-              placeholder='Enter your email address'
-              className="w-full sm:flex-1 px-6 py-3 rounded-full border border-gray-300 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
-            />
-            <button className='w-full sm:w-auto px-8 py-3 rounded-full bg-primary text-white font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-md hover:shadow-lg'>
-              Join VIP List
-            </button>
-          </div>
-        </div>
-        
+  
         {/* Main Links Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12 mb-16">
           {/* Contact Info */}

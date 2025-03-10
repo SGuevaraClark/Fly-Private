@@ -37,7 +37,7 @@
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-2xl md:text-3xl lg:text-5xl;
   }
 
   h3 {
@@ -62,9 +62,9 @@
 }
 
 @layer components {
-  /* Luxury button styles - updated to match VistaJet's elegant design */
+  /* Standardized Button Styles - Luxury Private Jet */
   .btn-primary {
-    @apply inline-block px-8 py-3 bg-primary text-light font-light tracking-wider transition-all duration-300 hover:bg-opacity-90 hover:shadow-md;
+    @apply inline-block px-8 py-3 rounded-full bg-primary text-light font-light tracking-wider hover:bg-opacity-90 transition-all duration-300 shadow-md hover:shadow-lg;
     position: relative;
     overflow: hidden;
   }
@@ -79,11 +79,43 @@
   }
 
   .btn-secondary {
-    @apply inline-block px-8 py-3 bg-transparent border border-dark text-dark font-light tracking-wider transition-all hover:bg-dark hover:text-light;
+    @apply inline-block px-8 py-3 rounded-full bg-transparent border border-dark text-dark font-light tracking-wider transition-all hover:bg-dark hover:text-light;
   }
 
   .btn-outline {
-    @apply inline-block px-8 py-3 bg-transparent border border-light text-light font-light tracking-wider transition-all hover:bg-light hover:text-dark;
+    @apply inline-block px-8 py-3 rounded-full bg-transparent border border-light text-light font-light tracking-wider transition-all hover:bg-light hover:text-dark;
+  }
+  
+  /* Standardized Section Styles */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply relative pb-3 text-2xl md:text-3xl font-bold text-dark mb-8;
+  }
+  
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-12 h-0.5 bg-primary;
+  }
+  
+  .section-title-center {
+    @apply relative pb-3 text-2xl md:text-3xl font-bold text-dark mb-8 text-center;
+  }
+  
+  .section-title-center::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-primary;
+  }
+  
+  .section-subtitle {
+    @apply uppercase text-xs tracking-[0.8rem] text-dark mb-2 block;
+  }
+
+  /* Standardized Card Styles */
+  .luxury-card {
+    @apply bg-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
   }
 
   /* Container */
@@ -91,21 +123,7 @@
     @apply px-4 md:px-8 mx-auto max-w-7xl;
   }
 
-  /* Section spacing */
-  .section {
-    @apply py-16 md:py-24 lg:py-32;
-  }
-
-  /* Luxury card */
-  .luxury-card {
-    @apply bg-light p-6 md:p-8 shadow-md hover:shadow-lg transition-all;
-  }
-
   /* Common utility classes */
-  .icon {
-    @apply text-xl cursor-pointer;
-  }
-
   .flex-center {
     @apply flex items-center justify-center;
   }
@@ -132,6 +150,16 @@
   .display-text {
     font-family: 'Playfair Display', serif;
     @apply font-medium tracking-wide leading-tight;
+  }
+  
+  /* Bullet List Item */
+  .bullet-item {
+    @apply flex items-center;
+  }
+  
+  .bullet-item::before {
+    content: '';
+    @apply inline-block w-1.5 h-1.5 bg-primary rounded-full mr-2 opacity-70 flex-shrink-0;
   }
 }
 

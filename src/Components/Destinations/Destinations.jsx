@@ -47,20 +47,18 @@ const Destinations = () => {
   }, []) 
 
   return (
-    <div id="destinations" className='py-16 bg-white'>
+    <div id="destinations" className='section bg-white'>
       <div className="container mx-auto px-4 max-w-[1200px]">
         <div className="text-center mb-12">
-          <span className="uppercase text-xs tracking-[0.8rem] text-blackColor block mb-2">
-            jet away
-          </span>
+          <span className="section-subtitle">Jet Away</span>
           <h2 
-            data-aos="fade-down" 
-            data-aos-duration="2500"
-            className="text-2xl md:text-3xl font-bold text-blackColor mb-4"
+            data-aos="fade-up" 
+            data-aos-duration="2000"
+            className="section-title-center"
           >
             Popular Private Jet Destinations
           </h2>
-          <p className="text-base text-greyText max-w-2xl mx-auto">
+          <p className="text-gray-600 text-base max-w-2xl mx-auto">
             Discover the most sought-after locations accessible by our luxury fleet, with simplified arrivals and VIP handling at all destinations
           </p>
         </div>
@@ -70,7 +68,8 @@ const Destinations = () => {
             <div 
               key={id}
               data-aos="fade-up" 
-              data-aos-duration="2500" 
+              data-aos-duration="2000"
+              data-aos-delay={id * 100} 
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
             >
               {/* Destination Image */}
@@ -88,7 +87,7 @@ const Destinations = () => {
 
               {/* Destination Details */}
               <div className="p-4">
-                <p className="text-sm text-greyText mb-2">{description}</p>
+                <p className="text-gray-600 text-sm mb-2">{description}</p>
                 <div className="flex items-center text-sm text-primary font-medium">
                   <span className="mr-2">✈</span>
                   <span>{flightTime}</span>

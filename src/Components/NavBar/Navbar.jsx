@@ -66,7 +66,7 @@ const Navbar = () => {
                 isScrolled ? '' : 'border border-light'
               }`}
             >
-              Request a Quote
+              Get a Quote
             </a>
           </nav>
 
