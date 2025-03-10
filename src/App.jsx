@@ -5,9 +5,9 @@ import Search from "./Components/Search/Search";
 import Introduction from "./Components/Introduction/Introduction";
 import Services from "./Components/Services/Services";
 import Advantages from "./Components/Advantages/Advantages";
-import Lounge from "./Components/Lounge/Lounge";
-import Travelers from "./Components/Travelers/Travelers";
-import Subscribe from "./Components/Subscribe/Subscribe";
+import CabinExperience from "./Components/CabinExperience/CabinExperience";
+import Destinations from "./Components/Destinations/Destinations";
+import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import './main.css'
@@ -33,9 +33,9 @@ function App() {
       <Introduction />
       <Services />
       <Advantages />
-      <Lounge />
-      <Travelers />
-      <Subscribe />
+      <CabinExperience />
+      <Destinations />
+      <Contact />
       <Footer />
     </div>
   );
