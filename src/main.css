@@ -62,17 +62,28 @@
 }
 
 @layer components {
-  /* Luxury button styles */
+  /* Luxury button styles - updated to match VistaJet's elegant design */
   .btn-primary {
-    @apply inline-block px-8 py-3 bg-primary text-light font-medium transition-all hover:bg-opacity-90;
+    @apply inline-block px-8 py-3 bg-primary text-light font-light tracking-wider transition-all duration-300 hover:bg-opacity-90 hover:shadow-md;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-light transition-all duration-300;
+  }
+  
+  .btn-primary:hover::after {
+    @apply w-full;
   }
 
   .btn-secondary {
-    @apply inline-block px-8 py-3 bg-transparent border border-dark text-dark font-medium transition-all hover:bg-dark hover:text-light;
+    @apply inline-block px-8 py-3 bg-transparent border border-dark text-dark font-light tracking-wider transition-all hover:bg-dark hover:text-light;
   }
 
   .btn-outline {
-    @apply inline-block px-8 py-3 bg-transparent border border-light text-light font-medium transition-all hover:bg-light hover:text-dark;
+    @apply inline-block px-8 py-3 bg-transparent border border-light text-light font-light tracking-wider transition-all hover:bg-light hover:text-dark;
   }
 
   /* Container */

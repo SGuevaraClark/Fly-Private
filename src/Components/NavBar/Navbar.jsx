@@ -61,12 +61,12 @@ const Navbar = () => {
             
             {/* CTA Button */}
             <a 
-              href="#get-a-quote" 
-              className={`btn-primary text-sm font-light tracking-wider py-2.5 px-7 ml-4 ${
+              href="#search" 
+              className={`btn-primary text-sm font-light tracking-wider py-2.5 px-7 ml-4 transition-all duration-300 hover:shadow-lg ${
                 isScrolled ? '' : 'border border-light'
               }`}
             >
-              Get a Quote
+              Request a Quote
             </a>
           </nav>
 
@@ -104,8 +104,12 @@ const Navbar = () => {
               
               {/* Mobile CTA */}
               <div className="mt-12">
-                <a href="#get-a-quote" className="btn-primary w-full block text-center py-4 font-light tracking-wider" onClick={toggleMenu}>
-                  Get a Quote
+                <a 
+                  href="#search" 
+                  className="btn-primary w-full block text-center py-4 font-light tracking-wider hover:shadow-lg transition-all duration-300" 
+                  onClick={toggleMenu}
+                >
+                  Request a Quote
                 </a>
               </div>
               
