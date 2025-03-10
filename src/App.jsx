@@ -3,8 +3,8 @@ import Navbar from "./Components/NavBar/Navbar";
 import Home from "./Components/Home/Home";
 import Search from "./Components/Search/Search";
 import Introduction from "./Components/Introduction/Introduction";
-import Support from "./Components/Support/Support";
-import Info from "./Components/Info/Info";
+import Services from "./Components/Services/Services";
+import Advantages from "./Components/Advantages/Advantages";
 import Lounge from "./Components/Lounge/Lounge";
 import Travelers from "./Components/Travelers/Travelers";
 import Subscribe from "./Components/Subscribe/Subscribe";
@@ -31,8 +31,8 @@ function App() {
       <Home />
       <Search />
       <Introduction />
-      <Support />
-      <Info />
+      <Services />
+      <Advantages />
       <Lounge />
       <Travelers />
       <Subscribe />
