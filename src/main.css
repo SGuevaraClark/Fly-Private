@@ -11,6 +11,7 @@
 
   html {
     @apply scroll-smooth;
+    scroll-padding-top: 1rem;
     font-family: 'Inter', sans-serif;
     @apply text-gray-800;
   }
@@ -89,6 +90,7 @@
   /* Standardized Section Styles */
   .section {
     @apply py-16 md:py-24;
+    scroll-margin-top: 1rem;
   }
 
   .section-title {
@@ -171,6 +173,11 @@
   
   .shadow-medium {
     @apply shadow-lg;
+  }
+
+  /* Section ID scroll margins */
+  #home, #services, #destinations, #why-us, #cabin-experience, #contact, #search {
+    scroll-margin-top: 1rem;
   }
 
   /* Custom animations */

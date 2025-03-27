@@ -13,7 +13,7 @@ const Advantages = () => {
   }, [])  
 
   return (
-    <div id="advantages" className='section bg-white'>
+    <div id="why-us" className='section bg-white'>
       <div className="container mx-auto px-4 max-w-[1200px]">
         <div className="text-center mb-12">
           <span className="section-subtitle">Why Choose Us</span>
