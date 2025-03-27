@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+# Large data files to exclude from AI digest
+src/data/airports.json
+src/data/airports.csv

@@ -48,7 +48,7 @@ const Services = () => {
                   On-Demand Charter Flights
                 </h4>
                 <p className="text-gray-600 text-base leading-relaxed">
-                  Access our fleet of luxury jets available 24/7 to any destination worldwide. Book with as little as 4 hours notice and enjoy complete flexibility with your travel schedule.
+                  Access our fleet of luxury jets available 24/7 to any destination worldwide. Book with as little as 8 hours notice and enjoy complete flexibility with your travel schedule.
                 </p>
               </div>
             </div>

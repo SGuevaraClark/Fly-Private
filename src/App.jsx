@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import Navbar from "./Components/NavBar/Navbar";
-import Home from "./Components/Home/Home";
-import Search from "./Components/Search/Search";
-import Introduction from "./Components/Introduction/Introduction";
-import Services from "./Components/Services/Services";
-import Advantages from "./Components/Advantages/Advantages";
-import CabinExperience from "./Components/CabinExperience/CabinExperience";
-import Destinations from "./Components/Destinations/Destinations";
-import Contact from "./Components/Contact/Contact";
-import Footer from "./Components/Footer/Footer";
-import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import Navbar from "./Components/Navbar/Navbar.jsx";
+import Home from "./Components/Home/Home.jsx";
+import Search from "./Components/Search/Search.jsx";
+import Introduction from "./Components/Introduction/Introduction.jsx";
+import Services from "./Components/Services/Services.jsx";
+import Advantages from "./Components/Advantages/Advantages.jsx";
+import CabinExperience from "./Components/CabinExperience/CabinExperience.jsx";
+import Destinations from "./Components/Destinations/Destinations.jsx";
+import Contact from "./Components/Contact/Contact.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.jsx";
 import './main.css'
 
 function App() {
@@ -32,9 +32,9 @@ function App() {
       <Search />
       <Introduction />
       <Services />
-      <Advantages />
       <CabinExperience />
       <Destinations />
+      <Advantages />
       <Contact />
       <Footer />
     </div>

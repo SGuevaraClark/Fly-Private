@@ -27,8 +27,8 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Navigation items
-  const navItems = ['Home', 'Fleet', 'Destinations', 'Services', 'About']
+  // Navigation items - updated to match site content
+  const navItems = ['Home', 'Services', 'Destinations', 'Why Us']
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
