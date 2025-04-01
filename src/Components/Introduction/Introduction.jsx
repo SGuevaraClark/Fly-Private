@@ -38,7 +38,7 @@ const Introduction = () => {
               data-aos-delay="300"
               className="text-gray-600 text-base leading-relaxed"
             >
-              With access to over 3,000 airports worldwide, we can take you closer to your final destination than commercial airlines, saving you valuable time.
+              With access to over 5,000 airports worldwide, we can take you closer to your final destination than commercial airlines, saving you valuable time.
             </p>
           </div>
           <div 

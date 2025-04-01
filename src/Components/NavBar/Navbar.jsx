@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import {AiOutlinePhone, AiOutlineGlobal, AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 
 //Imported Images ===>
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/flyprivatelogo.png'
 
 const Navbar = () => {
   // Get current location for context awareness
@@ -124,7 +124,7 @@ const Navbar = () => {
               
               <div className="mt-12 flex justify-center gap-6">
                 <a href="tel:+1234567890" className="flex items-center gap-2 text-light hover:text-primary font-light tracking-wide">
-                  <AiOutlinePhone className="text-lg" /> +1 (234) 567-890
+                  <AiOutlinePhone className="text-lg" /> +34 661 088 250
                 </a>
               </div>
             </nav>

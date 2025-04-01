@@ -66,8 +66,9 @@ const Footer = () => {
           
           {/* Contact */}
           <div className="flex flex-wrap justify-center gap-6">
+          <span className="text-gray-400 text-sm">Contact Us:</span>
             <a href="tel:+12345678901" className="text-gray-500 text-sm hover:text-primary flex items-center gap-2">
-              <HiOutlinePhone className="text-primary" /> +1 (234) 567-8901
+              <HiOutlinePhone className="text-primary" /> +34 661 088 250
             </a>
             <a href="mailto:charter@privatejet.com" className="text-gray-500 text-sm hover:text-primary flex items-center gap-2">
               <HiOutlineMail className="text-primary" /> charter@privatejet.com
@@ -93,6 +94,20 @@ const Footer = () => {
         
         {/* Row 3: Copyright */}
         <div className="text-center text-gray-400 text-xs pt-4 border-t border-gray-100">
+          {/* Vwio Credit */}
+          <div className="mb-4">
+            <p className="text-sm mb-2">
+              Created by{" "}
+              <a 
+                href="https://www.instagram.com/vwio.ai?igsh=MW01bms5MnZoNWRkdQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                Vwio
+              </a>
+            </p>
+          </div>
           © 2025 PrivateJets
         </div>
         
