@@ -72,45 +72,46 @@ const Blog = ({ category }) => {
           }
           
           return (
-            <div key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              {/* Access image directly from post, check if it's an array and has items */}
-              {post.image && Array.isArray(post.image) && post.image.length > 0 && post.image[0].url && (
-                <img 
-                  src={`http://localhost:1337${post.image[0].url}`} 
-                  alt={post.title || 'Blog post'} 
-                  className="w-full h-48 object-cover"
-                />
-              )}
-              
-              <div className="p-6">
-                {/* Access category directly from post */}
-                {post.category && (
-                  <div className="text-xs text-primary font-medium mb-1">
-                    {post.category}
-                  </div>
+            <Link 
+              to={`/blog/${post.slug}`} 
+              key={post.id}
+              className="block cursor-pointer"
+            >
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transform transition-all duration-300 hover:scale-105">
+                {/* Access image directly from post, check if it's an array and has items */}
+                {post.image && Array.isArray(post.image) && post.image.length > 0 && post.image[0].url && (
+                  <img 
+                    src={`http://localhost:1337${post.image[0].url}`} 
+                    alt={post.title || 'Blog post'} 
+                    className="w-full h-48 object-cover"
+                  />
                 )}
                 
-                {/* Access title directly from post */}
-                <h3 className="text-xl font-bold mb-2">
-                  {post.title || 'Untitled Post'}
-                </h3>
-                
-                {/* Access summary directly from post */}
-                {post.summary && (
-                  <p className="text-gray-600 mb-4">{post.summary}</p>
-                )}
-                
-                {/* Access slug directly from post */}
-                {post.slug && (
-                  <Link 
-                    to={`/blog/${post.slug}`} 
-                    className="text-primary font-medium hover:underline"
-                  >
+                <div className="p-6">
+                  {/* Access category directly from post */}
+                  {post.category && (
+                    <div className="text-xs text-primary font-medium mb-1">
+                      {post.category}
+                    </div>
+                  )}
+                  
+                  {/* Access title directly from post */}
+                  <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-primary transition-colors duration-300">
+                    {post.title || 'Untitled Post'}
+                  </h3>
+                  
+                  {/* Access summary directly from post */}
+                  {post.summary && (
+                    <p className="text-gray-600 mb-4">{post.summary}</p>
+                  )}
+                  
+                  {/* Read More button with hover effect */}
+                  <div className="text-primary font-medium hover:underline transition-all duration-300">
                     Read More
-                  </Link>
-                )}
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
