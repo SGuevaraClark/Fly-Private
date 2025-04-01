@@ -31,7 +31,7 @@ const BlogPost = ({ slug }) => {
   
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
         </div>
@@ -41,7 +41,7 @@ const BlogPost = ({ slug }) => {
   
   if (error || !post) {
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
           {error || 'Blog post not found.'}
         </div>
@@ -53,7 +53,7 @@ const BlogPost = ({ slug }) => {
   
   if (!title || !content) {
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded">
           Incomplete blog post data.
         </div>
@@ -62,7 +62,7 @@ const BlogPost = ({ slug }) => {
   }
   
   return (
-    <div className="container mx-auto px-4 py-16 mt-16">
+    <div className="container mx-auto px-4 pt-32 pb-16">
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
         <Link 

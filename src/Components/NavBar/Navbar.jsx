@@ -53,7 +53,9 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <li key={item}>
                   <a 
-                    href={isBlogPage && item !== 'Home' ? `/#${item.toLowerCase().replace(/\s+/g, '-')}` : `#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={isBlogPage ? 
+                      (item === 'Home' ? '/' : `/#${item.toLowerCase().replace(/\s+/g, '-')}`) : 
+                      `#${item.toLowerCase().replace(/\s+/g, '-')}`}
                     className={`text-sm font-light uppercase tracking-widest transition-colors hover:opacity-80 ${
                       isScrolled || isBlogPage ? 'text-dark hover:text-primary' : 'text-light hover:text-primary'
                     }`}
@@ -97,7 +99,9 @@ const Navbar = () => {
                 {navItems.map((item) => (
                   <li key={item}>
                     <a 
-                      href={isBlogPage && item !== 'Home' ? `/#${item.toLowerCase().replace(/\s+/g, '-')}` : `#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                      href={isBlogPage ? 
+                        (item === 'Home' ? '/' : `/#${item.toLowerCase().replace(/\s+/g, '-')}`) : 
+                        `#${item.toLowerCase().replace(/\s+/g, '-')}`}
                       className="text-xl font-light tracking-widest text-light hover:text-primary block py-2 border-b border-light border-opacity-20"
                       onClick={toggleMenu}
                     >

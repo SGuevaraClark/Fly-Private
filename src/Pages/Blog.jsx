@@ -31,7 +31,7 @@ const Blog = ({ category }) => {
   
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
         </div>
@@ -41,7 +41,7 @@ const Blog = ({ category }) => {
   
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
           {error}
         </div>
@@ -52,7 +52,7 @@ const Blog = ({ category }) => {
   // Check if posts is actually an array before checking length
   if (!Array.isArray(posts) || posts.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         <h2 className="text-2xl font-bold mb-8">Sky Blog {category ? `- ${category}` : ''}</h2>
         <p className="text-gray-600">No blog posts found. Check back soon for new content!</p>
       </div>
@@ -60,7 +60,7 @@ const Blog = ({ category }) => {
   }
   
   return (
-    <div className="container mx-auto px-4 py-16 mt-16">
+    <div className="container mx-auto px-4 pt-32 pb-16">
       <h2 className="text-2xl font-bold mb-8">Sky Blog {category ? `- ${category}` : ''}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
