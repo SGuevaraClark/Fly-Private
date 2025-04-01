@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Imported icons ==========>
 import {AiOutlineInstagram, AiOutlineTwitter} from 'react-icons/ai'
@@ -9,7 +9,41 @@ import {FaLinkedinIn} from 'react-icons/fa'
 //Imported Images ===>
 import Logo from '../../assets/logo.png'
 
+// Import our blog service
+import { fetchBlogPosts } from '../../services/blogService'
+
 const Footer = () => {
+  // State to hold blog categories
+  const [blogCategories, setBlogCategories] = useState([
+    'Destinations', 'Technology', 'News'
+  ]);
+  
+  // State for loading state
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Fetch blog categories on component mount
+  useEffect(() => {
+    const loadBlogCategories = async () => {
+      try {
+        setIsLoading(true);
+        // You could fetch actual categories here if your Strapi has them as a separate entity
+        // For now, we'll keep using our predefined categories
+        
+        // This is where you'd make the actual API call if needed:
+        // const posts = await fetchBlogPosts();
+        // const categories = [...new Set(posts.map(post => post.attributes.category))];
+        // setBlogCategories(categories);
+        
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading blog categories:', error);
+        setIsLoading(false);
+      }
+    };
+    
+    loadBlogCategories();
+  }, []);
+
   return (
     <footer className="bg-white py-12 border-t border-gray-100">
       <div className="container mx-auto px-4 max-w-[1200px]">
@@ -19,10 +53,10 @@ const Footer = () => {
           {/* Sky Blog */}
           <div className="flex gap-6">
             <span className="text-gray-400 text-sm">Sky Blog:</span>
-            {['Destinations', 'Technology', 'News'].map((item) => (
+            {blogCategories.map((item) => (
               <a 
                 key={item}
-                href="#" 
+                href={`/blog/category/${item.toLowerCase()}`} 
                 className="text-gray-500 text-sm hover:text-primary"
               >
                 {item}

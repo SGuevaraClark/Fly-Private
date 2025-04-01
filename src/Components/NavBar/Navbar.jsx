@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useLocation } from 'react-router-dom'
 
 // Imported Icons
 import {AiOutlinePhone, AiOutlineGlobal, AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
@@ -7,6 +8,10 @@ import {AiOutlinePhone, AiOutlineGlobal, AiOutlineMenu, AiOutlineClose} from 're
 import Logo from '../../assets/logo.png'
 
 const Navbar = () => {
+  // Get current location for context awareness
+  const location = useLocation();
+  const isBlogPage = location.pathname.includes('/blog');
+  
   // Toggle navbar menu
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
@@ -32,7 +37,7 @@ const Navbar = () => {
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-light shadow-soft' : 'bg-transparent'
+      isScrolled || isBlogPage ? 'bg-light shadow-soft' : 'bg-transparent'
     }`}>
       <div className="container">
         {/* Main Navigation */}
@@ -48,9 +53,9 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <li key={item}>
                   <a 
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                    href={isBlogPage && item !== 'Home' ? `/#${item.toLowerCase().replace(/\s+/g, '-')}` : `#${item.toLowerCase().replace(/\s+/g, '-')}`}
                     className={`text-sm font-light uppercase tracking-widest transition-colors hover:opacity-80 ${
-                      isScrolled ? 'text-dark hover:text-primary' : 'text-light hover:text-primary'
+                      isScrolled || isBlogPage ? 'text-dark hover:text-primary' : 'text-light hover:text-primary'
                     }`}
                   >
                     {item}
@@ -61,9 +66,9 @@ const Navbar = () => {
             
             {/* CTA Button */}
             <a 
-              href="#search" 
+              href={isBlogPage ? '/#search' : '#search'}
               className={`btn-primary text-sm font-light tracking-wider py-2.5 px-7 ml-4 transition-all duration-300 hover:shadow-lg ${
-                isScrolled ? '' : 'border border-light'
+                isScrolled || isBlogPage ? '' : 'border border-light'
               }`}
             >
               Get a Quote
@@ -77,9 +82,9 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <AiOutlineClose className={isScrolled ? 'text-dark' : 'text-light'} />
+              <AiOutlineClose className={isScrolled || isBlogPage ? 'text-dark' : 'text-light'} />
             ) : (
-              <AiOutlineMenu className={isScrolled ? 'text-dark' : 'text-light'} />
+              <AiOutlineMenu className={isScrolled || isBlogPage ? 'text-dark' : 'text-light'} />
             )}
           </button>
 
@@ -92,7 +97,7 @@ const Navbar = () => {
                 {navItems.map((item) => (
                   <li key={item}>
                     <a 
-                      href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                      href={isBlogPage && item !== 'Home' ? `/#${item.toLowerCase().replace(/\s+/g, '-')}` : `#${item.toLowerCase().replace(/\s+/g, '-')}`}
                       className="text-xl font-light tracking-widest text-light hover:text-primary block py-2 border-b border-light border-opacity-20"
                       onClick={toggleMenu}
                     >
@@ -105,7 +110,7 @@ const Navbar = () => {
               {/* Mobile CTA */}
               <div className="mt-12">
                 <a 
-                  href="#search" 
+                  href={isBlogPage ? '/#search' : '#search'}
                   className="btn-primary w-full block text-center py-4 font-light tracking-wider hover:shadow-lg transition-all duration-300" 
                   onClick={toggleMenu}
                 >
